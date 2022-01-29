@@ -1,5 +1,4 @@
-nosex=0;
-nosey=0;
+
 rightWristx=0;
 leftWristy=0;
 difference=0;
@@ -22,12 +21,22 @@ console.log("posenet is iniatilised");
 
 function draw(){
 background('#ADD8E6');
+textSize(difference);
+fill('#000000');
+text("ARYAN",50,400);
 }
 
 function gotPoses(results){
 if(results.length>0){
 console.log(results);
+leftWristx=results[0].pose.leftWrist.x;
+rightWristx=results[0].pose.rightWrist.x;
+difference=floor(leftWristx - rightWristx);
+console.log("difference = " + difference);
+console.log("Left Wrist x = " + leftWristx);
+console.log("Right Wrist x = " + rightWristx);
+}
+
 }
 
     
-}
